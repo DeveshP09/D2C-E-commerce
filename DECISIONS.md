@@ -37,7 +37,7 @@ and rating filters, with sort by price/rating and popularity (`rating.count`) as
 
 ## More design decisions
 
-Centralized config routing 
-Data layer : ApiClient wrapper ,async add-to-cart
-Error handling : App-level error boundary
-Path constants
+- Centralized config routing
+- Data layer: ApiClient wrapper, async add-to-cart
+- Error handling: App-level error boundary
+- Path constants
