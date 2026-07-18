@@ -1,0 +1,27 @@
+$color-star: #ff6201;
+$color-text: #1a1a1a;
+$color-muted: #8a8a8a;
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+}
+
+.value {
+  font-weight: 700;
+  color: $color-text;
+}
+
+.stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  color: $color-star;
+  font-size: 0.75rem;
+}
+
+.count {
+  color: $color-muted;
+}

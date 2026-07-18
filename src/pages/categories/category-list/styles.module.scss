@@ -1,0 +1,22 @@
+.categories {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 50vh;
+  text-align: center;
+}
+
+.heading {
+  margin: 0;
+  font-size: 1rem; 
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.comingSoon {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #8a8a8a;
+}

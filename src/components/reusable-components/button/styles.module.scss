@@ -1,0 +1,91 @@
+$color-primary: #1f7a4d;
+$color-primary-hover: #196340;
+$color-border: #d9d9d9;
+$color-text: #1a1a1a;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.label {
+  line-height: 1;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.1em;
+}
+
+.spinner {
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* sizes */
+.small {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.8rem;
+}
+
+.medium {
+  padding: 0.6rem 1.1rem;
+  font-size: 0.9rem;
+}
+
+.large {
+  padding: 0.85rem 1.5rem;
+  font-size: 1rem;
+}
+
+/* variants */
+.primary {
+  background: $color-primary;
+  color: #fff;
+
+  &:hover:not(:disabled) {
+    background: $color-primary-hover;
+  }
+}
+
+.secondary {
+  background: #fff;
+  color: $color-text;
+  border-color: $color-border;
+
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+}
+
+.ghost {
+  background: transparent;
+  color: $color-text;
+
+  &:hover:not(:disabled) {
+    background: rgba(0, 0, 0, 0.05);
+  }
+}
+
+.fullWidth {
+  width: 100%;
+}

@@ -1,0 +1,32 @@
+$gutter: 8rem;
+$gutter-mobile: 1rem;
+$color-border: #e5e5e5;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding-inline: $gutter;
+  background: #fff;
+  border-bottom: 1px solid $color-border;
+
+  @media (max-width: 767px) {
+    padding-inline: $gutter-mobile;
+  }
+}
+
+.content {
+  flex: 1;
+  padding-inline: $gutter;
+  background: #f7f9fb;
+
+  @media (max-width: 767px) {
+    padding-inline: $gutter-mobile;
+  }
+}
