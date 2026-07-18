@@ -10,7 +10,7 @@ export const Rating = ({ rate, count }) => {
     <div className={styles.rating}>
       <span className={styles.value}>{rate.toFixed(1)}</span>
 
-      <span className={styles.stars} aria-label={`${rate} out of 5`}>
+      <span className={styles.stars}>
         {STARS.map((position) => {
           if (rate >= position) return <FaStar key={position} />
           if (rate >= position - 0.5) return <FaStarHalfAlt key={position} />

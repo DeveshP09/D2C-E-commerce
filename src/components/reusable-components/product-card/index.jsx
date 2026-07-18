@@ -33,8 +33,6 @@ export const ProductCard = ({
   return (
     <article className={styles.card}>
       <div className={styles.media}>
-        {/* Image links to the detail page; the CTA is kept outside the link
-            so we never nest a <button> inside an <a>. */}
         <Link to={to} className={styles.frame} aria-label={title}>
           <img className={styles.image} src={image} alt={title} loading="lazy" />
           {soldOut && <span className={styles.ribbon}>Sold Out</span>}

@@ -40,7 +40,6 @@ $width: 380px;
   transform: translateX(0);
 }
 
-/* ---------- header ---------- */
 .header {
   display: flex;
   align-items: center;
@@ -51,7 +50,7 @@ $width: 380px;
 
 .heading {
   margin: 0;
-  font-size: 1rem; // heading — per 12/14/16 scale
+  font-size: 1rem;
   font-weight: 700;
 }
 
@@ -68,7 +67,6 @@ $width: 380px;
   color: $color-text;
 }
 
-/* ---------- empty ---------- */
 .empty {
   flex: 1;
   display: flex;
@@ -84,7 +82,6 @@ $width: 380px;
   font-size: 2.5rem;
 }
 
-/* ---------- items ---------- */
 .items {
   flex: 1;
   list-style: none;
@@ -199,7 +196,6 @@ $width: 380px;
   }
 }
 
-/* ---------- summary ---------- */
 .summary {
   padding: 1.25rem;
   border-top: 1px solid $color-border;

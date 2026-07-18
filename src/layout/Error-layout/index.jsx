@@ -14,7 +14,7 @@ export const ErrorLayout = () => {
       <p className={styles.message}>
         {isNotFound
           ? "The page you're looking for doesn't exist or has moved."
-          : error?.statusText || error?.message || 'An unexpected error occurred.'}
+          : error?.message || 'An unexpected error occurred.'}
       </p>
       <Link to={ROUTES.home} className={styles.link}>
         Back to home

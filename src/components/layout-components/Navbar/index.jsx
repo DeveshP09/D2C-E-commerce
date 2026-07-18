@@ -52,14 +52,13 @@ export const Navbar = ({ cartCount = 0, onCartClick }) => {
           {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
         </button>
 
-        <button type="button" className={styles.iconButton} aria-label="Account">
+        <button type="button" className={styles.iconButton}>
           <FiUser className={styles.icon} />
         </button>
 
         <button
           type="button"
           className={`${styles.iconButton} ${styles.menuToggle}`}
-          aria-label="Menu"
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((open) => !open)}
         >

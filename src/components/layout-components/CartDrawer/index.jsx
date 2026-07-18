@@ -41,7 +41,6 @@ export const CartDrawer = ({ isOpen, onClose }) => {
       <aside
         className={`${styles.drawer} ${isOpen ? styles.drawerOpen : ''}`}
         role="dialog"
-        aria-label="Shopping cart"
         aria-hidden={!isOpen}
       >
         <header className={styles.header}>
@@ -50,7 +49,6 @@ export const CartDrawer = ({ isOpen, onClose }) => {
             type="button"
             className={styles.close}
             onClick={onClose}
-            aria-label="Close cart"
           >
             <FiX />
           </button>
@@ -86,7 +84,6 @@ export const CartDrawer = ({ isOpen, onClose }) => {
                         type="button"
                         onClick={() => setQuantity(item.key, item.quantity - 1)}
                         disabled={item.quantity <= 1}
-                        aria-label="Decrease quantity"
                       >
                         <FiMinus />
                       </button>
@@ -94,7 +91,6 @@ export const CartDrawer = ({ isOpen, onClose }) => {
                       <button
                         type="button"
                         onClick={() => setQuantity(item.key, item.quantity + 1)}
-                        aria-label="Increase quantity"
                       >
                         <FiPlus />
                       </button>
@@ -105,7 +101,6 @@ export const CartDrawer = ({ isOpen, onClose }) => {
                     type="button"
                     className={styles.remove}
                     onClick={() => removeItem(item.key)}
-                    aria-label={`Remove ${item.title}`}
                   >
                     <FiTrash2 />
                   </button>

@@ -20,7 +20,6 @@ const ProductDetailView = ({ productId }) => {
 
   const [product, setProduct] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
   const [activeImage, setActiveImage] = useState(0)
   const [quantity, setQuantity] = useState(1)
   const [adding, setAdding] = useState(false)
@@ -31,14 +30,10 @@ const ProductDetailView = ({ productId }) => {
     ProductService.getById(productId)
       .then((data) => {
         if (!active) return
-        if (!data || !data.id) {
-          setError(new Error('Product not found'))
-          return
-        }
         setProduct(data)
       })
       .catch((err) => {
-        if (active) setError(err)
+        console.error(err)
       })
       .finally(() => {
         if (active) setLoading(false)
@@ -129,17 +124,6 @@ const ProductDetailView = ({ productId }) => {
     )
   }
 
-  if (error) {
-    return (
-      <section className={styles.detail}>
-        <div className={styles.state}>
-          <h2>Product not found</h2>
-          <p>We couldn&apos;t load this product. It may not exist.</p>
-          <Link to={ROUTES.home}>Back to products</Link>
-        </div>
-      </section>
-    )
-  }
 
   return (
     <section className={styles.detail}>

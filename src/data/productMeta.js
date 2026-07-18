@@ -1,11 +1,11 @@
 
-export const LOW_STOCK_THRESHOLD = 3
+const LOW_STOCK = 3
 
 const classify = (stock) => {
   const soldOut = stock === 0
   const status = soldOut
     ? 'sold-out'
-    : stock <= LOW_STOCK_THRESHOLD
+    : stock <= LOW_STOCK
       ? 'low-stock'
       : 'in-stock'
   return { stock, soldOut, status }
