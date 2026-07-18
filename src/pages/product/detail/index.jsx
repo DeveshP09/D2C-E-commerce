@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
-import { Link, useParams, useSearchParams } from 'react-router-dom'
+import { useParams, useSearchParams } from 'react-router-dom'
 import { FiShoppingCart, FiMinus, FiPlus } from 'react-icons/fi'
 import ProductService from '../../../services/ProductService'
 import { mockAddToCart } from '../../../services/mockCart'
@@ -9,7 +9,6 @@ import { useCart } from '../../../hooks/useCart'
 import { Button } from '../../../components/reusable-components/button'
 import { Rating } from '../../../components/reusable-components/rating'
 import { formatPrice } from '../../../utils/currency'
-import { ROUTES } from '../../../constants/routes'
 import styles from './styles.module.scss'
 
 const THUMB_COUNT = 4
@@ -57,35 +56,35 @@ const ProductDetailView = ({ productId }) => {
   const selectedSize =
     requestedSize && !requestedSize.soldOut ? requestedSize : firstAvailableSize
 
-  const canonicalColor = selectedColor?.name
-  const canonicalSize = selectedSize?.label
+  const colorName = selectedColor?.name
+  const sizeLabel = selectedSize?.label
 
   const showVariants = product ? hasVariants(product.category) : false
   const productStock = getStockInfo(productId)
 
   useEffect(() => {
     if (!product || !showVariants) return
-    if (canonicalColor === colorParam && canonicalSize === sizeParam) return
+    if (colorName === colorParam && sizeLabel === sizeParam) return
 
-    const params = {}
-    if (canonicalColor) params.color = canonicalColor
-    if (canonicalSize) params.size = canonicalSize
-    setSearchParams(params, { replace: true })
-  }, [product, showVariants, canonicalColor, canonicalSize, colorParam, sizeParam, setSearchParams])
-
-  const changeVariant = (colorName, sizeLabel) => {
     const params = {}
     if (colorName) params.color = colorName
     if (sizeLabel) params.size = sizeLabel
     setSearchParams(params, { replace: true })
+  }, [product, showVariants, colorName, sizeLabel, colorParam, sizeParam, setSearchParams])
+
+  const changeVariant = (nextColor, nextSize) => {
+    const params = {}
+    if (nextColor) params.color = nextColor
+    if (nextSize) params.size = nextSize
+    setSearchParams(params, { replace: true })
   }
 
-  const handleSelectColor = (color) => changeVariant(color.name, canonicalSize)
+  const handleSelectColor = (color) => changeVariant(color.name, sizeLabel)
 
   const handleSelectSize = (size) => {
     if (size.soldOut) return
     setQuantity(1)
-    changeVariant(canonicalColor, size.label)
+    changeVariant(colorName, size.label)
   }
 
   const soldOut = showVariants ? !selectedSize || selectedSize.soldOut : productStock.soldOut
@@ -98,7 +97,7 @@ const ProductDetailView = ({ productId }) => {
 
   const handleAddToCart = async () => {
     if (!product || soldOut || adding) return
-    const variant = showVariants ? { color: canonicalColor, size: canonicalSize } : {}
+    const variant = showVariants ? { color: colorName, size: sizeLabel } : {}
     setAdding(true)
     try {
       await mockAddToCart({ id: product.id, ...variant, quantity })
@@ -167,7 +166,7 @@ const ProductDetailView = ({ productId }) => {
                       key={color.name}
                       type="button"
                       className={`${styles.swatch} ${
-                        color.name === canonicalColor ? styles.swatchActive : ''
+                        color.name === colorName ? styles.swatchActive : ''
                       }`}
                       style={{ background: color.hex }}
                       onClick={() => handleSelectColor(color)}
@@ -185,7 +184,7 @@ const ProductDetailView = ({ productId }) => {
                   {variants.sizes.map((size) => {
                     const classNames = [
                       styles.size,
-                      size.label === canonicalSize ? styles.sizeActive : '',
+                      size.label === sizeLabel ? styles.sizeActive : '',
                       size.soldOut ? styles.sizeSoldOut : '',
                       size.status === 'low-stock' ? styles.sizeLow : '',
                     ]
@@ -227,7 +226,6 @@ const ProductDetailView = ({ productId }) => {
                 type="button"
                 onClick={increment}
                 disabled={quantity >= maxQuantity || soldOut}
-                aria-label="Increase quantity"
               >
                 <FiPlus />
               </button>

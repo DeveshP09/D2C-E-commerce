@@ -13,7 +13,6 @@ export const ProductListing = () => {
   const { addItem } = useCart()
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
 
   useEffect(() => {
     let active = true
@@ -23,7 +22,7 @@ export const ProductListing = () => {
         if (active) setProducts(data)
       })
       .catch((err) => {
-        if (active) setError(err)
+        console.error(err)
       })
       .finally(() => {
         if (active) setLoading(false)
@@ -41,17 +40,6 @@ export const ProductListing = () => {
           {Array.from({ length: SKELETON_COUNT }).map((_, index) => (
             <div key={index} className={styles.skeleton} />
           ))}
-        </div>
-      </section>
-    )
-  }
-
-  if (error) {
-    return (
-      <section className={styles.listing}>
-        <div className={styles.state}>
-          <h2>Something went wrong</h2>
-          <p>We couldn&apos;t load products. Please try again.</p>
         </div>
       </section>
     )
