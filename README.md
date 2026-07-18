@@ -12,7 +12,8 @@ npm run dev       # dev server
 npm run build     # production build
 ```
 
-Then open the URL printed in the terminal (usually http://localhost:5173).
+## Live Url
+https://devesh-d2c.netlify.app/
 
 ## Design decisions
 
