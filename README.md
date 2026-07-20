@@ -27,7 +27,7 @@ https://devesh-d2c.netlify.app/
 
 - **Variant / stock is generated from the product id.** The Fake Store
   API has no colours, sizes or stock, so these are derived deterministically from
-  the id (no random values). The same product always shows the same variants across
+  the id (no random values). The same product always shows the same variants across 
   refreshes and deep-links. Colours/sizes only apply to clothing categories.
 
 - **Selected variant lives in the URL** (`?color=&size=`) so a product page is
